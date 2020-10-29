@@ -6,7 +6,7 @@ cursor = connection.cursor()
 
 sql1 ='''CREATE TABLE IF NOT EXISTS users (
    uid INT AUTO_INCREMENT NOT NULL,
-   user VARCHAR(32) NOT NULL,
+   email VARCHAR(32) NOT NULL,
    password VARCHAR(16),   
    PRIMARY KEY (uid)
 )'''
@@ -26,6 +26,7 @@ sql3 ='''CREATE TABLE IF NOT EXISTS tasks (
    PRIMARY KEY (tid)
 )'''
 cursor.execute(sql3)
-# connection.commit()
-# cursor.close()
+
+connection.commit()
+cursor.close()
 connection.close()

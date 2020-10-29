@@ -1,33 +1,11 @@
-import sqlite3
+import pymysql 
 
-connection = sqlite3.connect('todo.db', check_same_thread = False)
+connection = pymysql.connect( host = 'localhost', port = 3306,
+    user = 'alp', passwd = '123456', db = 'todo' )
 cursor = connection.cursor()
 
-cursor.execute(
-    """INSERT INTO users(
-        username,
-        password,
-        favorite_color
-        )VALUES(
-            'Gordon',
-            'Ramsay',
-            'Red'
-        );"""
-
-)
-
-cursor.execute(
-    """INSERT INTO users(
-        username,
-        password,
-        favorite_color
-        )VALUES(
-            'Ironman',
-            'Tony',
-            'Gold'
-        );"""
-
-)
+sql1 = """INSERT INTO users( email, password) VALUES( 'a@b.com', '123');"""
+cursor.execute(sql1)
 
 connection.commit()
 cursor.close()
