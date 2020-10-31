@@ -1,0 +1,23 @@
+{% extends "structure.html" %}
+
+{% block main %}
+  <h1>Welcome to todo app</h1>
+  <br>
+  {{ message1 }}
+  <br><br>
+  {{ message2 }}
+  <br><br>
+  {{ message3 }}
+  <br><br>
+  {{ err_message }}
+  <br><br>
+  <form action="/" method ="post">
+    <input placeholder='E-mail' name="email" type="text">
+    <input placeholder='Password' name="password" type="password">
+    <input type = "submit">
+  </form>
+  <br>
+  <br>
+  <a href="/signup">Sign up here!</a>
+
+{% endblock main %}
