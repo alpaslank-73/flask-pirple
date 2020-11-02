@@ -27,7 +27,7 @@ CREATE TABLE `lists` (
   `uid` int(11) NOT NULL,
   `lname` varchar(16) DEFAULT NULL,
   PRIMARY KEY (`lid`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -36,6 +36,7 @@ CREATE TABLE `lists` (
 
 LOCK TABLES `lists` WRITE;
 /*!40000 ALTER TABLE `lists` DISABLE KEYS */;
+INSERT INTO `lists` VALUES (1,38,'math'),(2,38,'physics'),(6,39,'ali list 1'),(7,39,'ali list 2'),(8,39,'ali1'),(9,39,'12345'),(13,40,'ayse list - 1'),(15,38,'chem'),(17,38,'biology');
 /*!40000 ALTER TABLE `lists` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -52,7 +53,7 @@ CREATE TABLE `tasks` (
   `text` varchar(160) DEFAULT NULL,
   `done` char(1) DEFAULT NULL,
   PRIMARY KEY (`tid`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -61,6 +62,7 @@ CREATE TABLE `tasks` (
 
 LOCK TABLES `tasks` WRITE;
 /*!40000 ALTER TABLE `tasks` DISABLE KEYS */;
+INSERT INTO `tasks` VALUES (2,1,'algebra','Y'),(15,1,'geometry','N');
 /*!40000 ALTER TABLE `tasks` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -76,7 +78,7 @@ CREATE TABLE `users` (
   `email` varchar(32) NOT NULL,
   `password` varchar(16) DEFAULT NULL,
   PRIMARY KEY (`uid`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=41 DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -85,7 +87,7 @@ CREATE TABLE `users` (
 
 LOCK TABLES `users` WRITE;
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
-INSERT INTO `users` VALUES (1,'a@b.com','123');
+INSERT INTO `users` VALUES (1,'a@b.com','123'),(38,'alp','123'),(39,'ali','12345'),(40,'ayse','123');
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -98,4 +100,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2020-10-30  0:17:00
+-- Dump completed on 2020-11-03  2:16:17

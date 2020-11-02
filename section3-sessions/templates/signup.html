@@ -1,9 +1,16 @@
 {% extends "structure.html" %}
 
 {% block main %}
-  <h1>Sign Up</h1>
+  <h1>Welcome to sign up page</h1>
   <br>
   {{ message1 }}
   <br><br>
-
+  
+  <form action="/signup" method ="post">
+    <input placeholder='Email' name="email" type="text">
+    <input placeholder='Password' name="password" type="password">
+    <input type = "submit">
+  </form>
+  <br><br>
+  {{ message2 | safe }}
 {% endblock main %}

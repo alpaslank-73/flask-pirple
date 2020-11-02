@@ -1,16 +1,18 @@
+
 {% extends "structure.html" %}
 
 {% block main %}
-  <h1>Welcome to todo app</h1>
+  <h1>Welcome to todo application</h1>
   <br>
-  {{ message1 }}
-  <br><br>
-  {{ message2 }}
-  <br><br>
-  {{ message3 }}
-  <br><br>
-  {{ err_message }}
-  <br><br>
+  <br>
+  {{ message1 | safe }}
+  
+  {{ message2 | safe }}
+  
+  {{ message3 | safe }}
+  
+  {{ err_message | safe}}
+  
   <form action="/" method ="post">
     <input placeholder='E-mail' name="email" type="text">
     <input placeholder='Password' name="password" type="password">
@@ -19,5 +21,8 @@
   <br>
   <br>
   <a href="/signup">Sign up here!</a>
+  <br>
+  <br>
+  <a href="/terms">Terms of use </a> <a href="/privacy">| Privacy Statement |</a> <a href="/about">About Us </a>
 
 {% endblock main %}
