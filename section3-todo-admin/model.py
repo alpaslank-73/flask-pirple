@@ -1,7 +1,23 @@
+import os
 import pymysql 
 
+HOST = os.environ.get('MYSQL_HOST')
+
+#try:
+#    mydb = mysql.connector.connect(
+#    host=str(HOST),
+#    user=str(USER),
+#    passwd=str(PASSWORD),
+#    db = str(DATABASE)
+#    )
+#    mycursor = mydb.cursor()
+#    print("Database successfully connected")
+#except Exception as e:
+#    print("could not connect to Database")
+#    print(str(e))
+
 def getuid(email):
-    connection = pymysql.connect( host = 'localhost', port = 3306,
+    connection = pymysql.connect( host = str(HOST), port = 3306,
     user = 'alp', passwd = '123456', db = 'todo' )
     cursor = connection.cursor()
     sql = "SELECT `uid` FROM `users` WHERE `email`=%s"
@@ -19,7 +35,7 @@ def getuid(email):
     connection.close()
 
 def getlid(lname):
-    connection = pymysql.connect( host = 'localhost', port = 3306,
+    connection = pymysql.connect( host = str(HOST), port = 3306,
     user = 'alp', passwd = '123456', db = 'todo' )
     cursor = connection.cursor()
     sql = "SELECT `lid` FROM `lists` WHERE `lname`=%s"
@@ -35,7 +51,7 @@ def getlid(lname):
     connection.close()
 
 def get_lid_from_tid(tid):
-    connection = pymysql.connect( host = 'localhost', port = 3306,
+    connection = pymysql.connect( host = str(HOST), port = 3306,
     user = 'alp', passwd = '123456', db = 'todo' )
     cursor = connection.cursor()
     sql = "SELECT `lid` FROM `tasks` WHERE `tid`=%s"
@@ -51,7 +67,7 @@ def get_lid_from_tid(tid):
     connection.close()
 
 def getlname(lid):
-    connection = pymysql.connect( host = 'localhost', port = 3306,
+    connection = pymysql.connect( host = str(HOST), port = 3306,
     user = 'alp', passwd = '123456', db = 'todo' )
     cursor = connection.cursor()
     sql = "SELECT `lname` FROM `lists` WHERE `lid`=%s"
@@ -66,7 +82,7 @@ def getlname(lid):
     connection.close()
 
 def check_users():
-    connection = pymysql.connect( host = 'localhost', port = 3306,
+    connection = pymysql.connect( host = str(HOST), port = 3306,
     user = 'alp', passwd = '123456', db = 'todo' )
     cursor = connection.cursor()
     sql = 'SELECT email FROM users ORDER BY uid DESC;'
@@ -82,7 +98,7 @@ def check_users():
     return users
 
 def check_pw(email):
-    connection = pymysql.connect( host = 'localhost', port = 3306,
+    connection = pymysql.connect( host = str(HOST), port = 3306,
     user = 'alp', passwd = '123456', db = 'todo' )
     cursor = connection.cursor()
     sql = "SELECT `password` FROM `users` WHERE `email`=%s"
@@ -100,7 +116,7 @@ def check_pw(email):
     connection.close()
 
 def signup(email, password):
-    connection = pymysql.connect( host = 'localhost', port = 3306,
+    connection = pymysql.connect( host = str(HOST), port = 3306,
     user = 'alp', passwd = '123456', db = 'todo' )
     cursor = connection.cursor()
     sql1 = "SELECT `password` FROM `users` WHERE `email`=%s"
@@ -119,7 +135,7 @@ def signup(email, password):
         connection.close()
 
 def addlist(uid,lname):
-    connection = pymysql.connect( host = 'localhost', port = 3306,
+    connection = pymysql.connect( host = str(HOST), port = 3306,
     user = 'alp', passwd = '123456', db = 'todo' )
     cursor = connection.cursor()
     sql1 = "SELECT `uid` FROM `lists` WHERE `lname`=%s"
@@ -141,7 +157,7 @@ def list_users_lists(email):
     uid = getuid(email)
     #print(uid)
     list = []
-    connection = pymysql.connect( host = 'localhost', port = 3306,
+    connection = pymysql.connect( host = str(HOST), port = 3306,
     user = 'alp', passwd = '123456', db = 'todo' )
     cursor = connection.cursor()
     sql = "SELECT `lid`, `lname` FROM `lists` WHERE `uid`=%s"
@@ -158,7 +174,7 @@ def list_users_lists(email):
     connection.close()
 
 def tasklist(lid):
-    connection = pymysql.connect( host = 'localhost', port = 3306,
+    connection = pymysql.connect( host = str(HOST), port = 3306,
     user = 'alp', passwd = '123456', db = 'todo' )
     cursor = connection.cursor()
     # sql = "SELECT `text`, `done` FROM `tasks` WHERE `lid`=%s"
@@ -179,7 +195,7 @@ def tasklist(lid):
 def dellist(lid): 
     # first delete all tasks belonging to list
     # lid = getlid(lname)
-    connection = pymysql.connect( host = 'localhost', port = 3306,
+    connection = pymysql.connect( host = str(HOST), port = 3306,
     user = 'alp', passwd = '123456', db = 'todo' )
     cursor = connection.cursor()
     sql1 = "DELETE  FROM `tasks` WHERE `lid`=%s"
@@ -191,7 +207,7 @@ def dellist(lid):
     connection.close
 
 def addtask(lid, text):
-    connection = pymysql.connect( host = 'localhost', port = 3306,
+    connection = pymysql.connect( host = str(HOST), port = 3306,
     user = 'alp', passwd = '123456', db = 'todo' )
     cursor = connection.cursor()
     sql1 = "SELECT `tid` FROM `tasks` WHERE `text`=%s"
@@ -210,7 +226,7 @@ def addtask(lid, text):
         connection.close()
 
 def deltask(tid):
-    connection = pymysql.connect( host = 'localhost', port = 3306,
+    connection = pymysql.connect( host = str(HOST), port = 3306,
     user = 'alp', passwd = '123456', db = 'todo' )
     cursor = connection.cursor()
     sql1 = "DELETE  FROM `tasks` WHERE `tid`=%s"
@@ -220,7 +236,7 @@ def deltask(tid):
     connection.close()
 
 def update_task(tid):
-    connection = pymysql.connect( host = 'localhost', port = 3306,
+    connection = pymysql.connect( host = str(HOST), port = 3306,
     user = 'alp', passwd = '123456', db = 'todo' )
     cursor = connection.cursor()
     sql1 = "SELECT `done` FROM `tasks` WHERE `tid`=%s"
