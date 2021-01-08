@@ -1,6 +1,9 @@
-import pymysql 
+import os
+import pymysql
 
-connection = pymysql.connect( host = 'localhost', port = 3306,
+HOST = os.environ.get('MYSQL_HOST')
+
+connection = pymysql.connect( host = str(HOST), port = 3306,
     user = 'alp', passwd = '123456', db = 'todo' )
 cursor = connection.cursor()
 
