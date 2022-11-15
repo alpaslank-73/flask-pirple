@@ -1,6 +1,7 @@
 from flask import Flask, render_template, request, session, redirect, url_for, g
 import model
-
+import os
+system_name = os.getenv('HOSTNAME')
 app = Flask(__name__)
 
 app.secret_key = 'jumpjacks'
@@ -10,10 +11,10 @@ user = model.check_users()
 @app.route('/', methods = ['GET', 'POST'])
 def home():
     if request.method == 'GET':
-        text1 = 'This web-test1 application lets you keep track of your things to do.<br><br>'
+        text1 = 'This web application lets you keep track of your things to do.<br><br>'
         text2 = 'In order to use the app you need to be a registered user.<br><br>'
         text3 = 'After signing in you can begin using the application.<br><br>'
-        return render_template('index.html', message1=text1, message2=text2, message3=text3)
+        return render_template('index.html', message1=system_name, message2=text2, message3=text3)
     else:
         session.pop('email', None)
         areyouuser = request.form['email']
