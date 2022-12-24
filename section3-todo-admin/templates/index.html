@@ -54,8 +54,8 @@
 <body class="text-center">
 
   <div style = "margin-top: 20px;" class = "container" >
-<!-- <h1>Welcome to todo application on {{ containername }}</h1>  -->
-  <h1>Welcome to todo application</h1>
+  <h1>Welcome to todo application on {{ containername }}</h1> 
+<!--  <h1>Welcome to todo application</h1> -->
   <br>
   <br>
   {{ message1 | safe }}
@@ -90,29 +90,5 @@
 
 </div>
 </body>
-
-
-<!-- <h1>Welcome to todo application on {{ system_name }} 1</h1>
-  <br>
-  <br>
-  {{ message1 | safe }}
-  
-  {{ message2 | safe }}
-  
-  {{ message3 | safe }}
-  
-  {{ err_message | safe}}
-  
-  <form action="/" method ="post">
-    <input placeholder='E-mail' name="email" type="text">
-    <input placeholder='Password' name="password" type="password">
-    <input type = "submit">
-  </form>
-  <br>
-  <br>
-  <a href="/signup">Sign up here!</a>
-  <br>
-  <br>
-  <a href="/terms">Terms of use </a> <a href="/privacy">| Privacy Statement |</a> <a href="/about">About Us </a> -->
 
   {% endblock main %}
